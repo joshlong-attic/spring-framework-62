@@ -1,6 +1,6 @@
 package bootiful.framework;
 
-public interface MessageProvider {
+interface MessageProvider {
 
 	String message();
 
