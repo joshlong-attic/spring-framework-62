@@ -20,18 +20,23 @@ class GreetingsControllerTest {
 	@TestBean
 	private MessageProvider messageProvider;
 
-	GreetingsControllerTest(@Autowired WebApplicationContext wac) {
-		this.mockMvc = MockMvcTester.from(wac);
-	}
-
 	static MessageProvider messageProvider() {
 		return () -> TEST_MESSAGE;
 	}
 
+	GreetingsControllerTest(@Autowired WebApplicationContext wac) {
+		this.mockMvc = MockMvcTester.from(wac);
+	}
+
 	@Test
 	void message() throws Exception {
-		var mvcTestResult = this.mockMvc.get().uri("/hello").accept(MediaType.APPLICATION_JSON).exchange();
-		Assertions.assertThat(mvcTestResult.getResponse().getContentAsString()).contains(TEST_MESSAGE);
+		var mvcTestResult = this.mockMvc
+				.get()
+				.uri("/hello")
+				.accept(MediaType.APPLICATION_JSON)
+				.exchange();
+		Assertions.assertThat(mvcTestResult.getResponse().getContentAsString())
+				.contains(TEST_MESSAGE);
 	}
 
 }

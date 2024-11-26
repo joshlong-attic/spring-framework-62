@@ -31,7 +31,11 @@ class Initializer {
     @EventListener({ApplicationReadyEvent.class, TodosResetEvent.class})
     void reset() {
         this.repository.deleteAll();
-        Stream.of("write a new blog,record a video on HTMX,record a new podcast episode".split(","))
+        Stream.of(
+                        "write a new blog",
+                        "record a video on HTMX",
+                        "record a new podcast episode"
+                ) 
                 .forEach(t -> this.repository.save(new Todo(null, t)));
     }
 }
@@ -70,7 +74,6 @@ class TodosController {
         return List.of(new ModelAndView("todos :: todos"),
                 new ModelAndView("todos :: todos-form"));
     }
-
 
     @ResponseBody
     @DeleteMapping(path = "/{todoId}", produces = MediaType.TEXT_HTML_VALUE)
