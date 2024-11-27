@@ -14,10 +14,10 @@ import java.util.Locale;
 
 interface CustomerRepository extends ListCrudRepository<Customer, Integer> {
 
-    @Query(" select * from #{ #tableName }")
+    @Query("select * from #{ #tableName }")
     Collection<Customer> all();
 
-    @Query("  select * from customer where language = :#{locale.language} ")
+    @Query("select * from customer where language = :#{locale.language} ")
     Collection<Customer> findCustomersBySystemLanguage();
 
     // this is new! support for property placeholder resolution in queries!
