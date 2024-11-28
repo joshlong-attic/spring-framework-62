@@ -2,14 +2,19 @@ package com.example.integration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.integration.dsl.DirectChannelSpec;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.http.config.EnableControlBusController;
+import org.springframework.integration.http.management.ControlBusController;
+import org.springframework.integration.support.management.ControlBusCommandRegistry;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
@@ -48,3 +53,4 @@ class ControlBusConfiguration {
 	}
 
 }
+ 
